@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend for Natively mobile app",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon",
@@ -14,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.3.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "lingo.dev": "^0.131.6"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
