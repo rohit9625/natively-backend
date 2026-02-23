@@ -1,5 +1,7 @@
+import { Queue } from "bullmq";
 import "dotenv/config";
 import {LingoDotDevEngine} from "lingo.dev/sdk";
+import redisConnection from "../config/redis.js";
 
 const apiKey = process.env.LINGODOTDEV_API_KEY;
 if (!apiKey) {
@@ -7,6 +9,12 @@ if (!apiKey) {
 }
 
 const lingo = new LingoDotDevEngine({ apiKey });
+const TRANSLATION_JOB_QUEUE = "translations";
+
+export const translationQueue = new Queue(
+  TRANSLATION_JOB_QUEUE,
+  { connection: redisConnection }
+);
 
 export interface TranslateOptions {
   sourceLocale: string | null;
